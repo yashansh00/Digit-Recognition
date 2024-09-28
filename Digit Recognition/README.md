@@ -24,35 +24,5 @@ MNIST [(Modified National Institute of Standards and Technology database)](https
 
 **Accuracy** using **5-crossfold Validation** is mean=98.960 std=0.097, n=5 and using the built-in evaluation of **99.13**
 
-![Custom number prediction](https://github.com/Joy2469/Deep-Learning-MNIST---Handwritten-Digit-Recognition/blob/master/Images/accuarcy%20custom.png)
-
-![prediction](Images/accuracy%20with%20custom%20data.png)
-
-<br/><br/>
-## Prediction
-### A. Dataset images
-![Data Set Prediction](https://github.com/Joy2469/Deep-Learning-MNIST---Handwritten-Digit-Recognition/blob/master/Images/data%20set%20image%20prediction.png)
-
-### B. Testing with Custom Number
-
-![Custom number prediction](Images/TestNumber.png)
-<br/>
-![prediction](Images/prediction.png)
-<br/><br/>
 
 
-# Run
-```
-python3 predict.py
-```
-
-
-# Resources:
-[Deep Learning Introduction](https://medium.com/r/?url=https%3A%2F%2Fwww.forbes.com%2Fsites%2Fbernardmarr%2F2018%2F10%2F01%2Fwhat-is-deep-learning-ai-a-simple-guide-with-8-practical-examples%2F%235a233f778d4b)<br/>
-[Install Tensorflow](https://medium.com/@cran2367/install-and-setup-tensorflow-2-0-2c4914b9a265)<br/>
-[Why Data Normalizing](https://medium.com/@urvashilluniya/why-data-normalization-is-necessary-for-machine-learning-models-681b65a05029)<br/>
-[One-Hot Code](https://medium.com/r/?url=https%3A%2F%2Fmachinelearningmastery.com%2Fwhy-one-hot-encode-data-in-machine-learning%2F)<br/>
-[Understanding of Convolutional Neural Network (CNN)](https://medium.com/@RaghavPrabhu/understanding-of-convolutional-neural-network-cnn-deep-learning-99760835f148%20https://www.youtube.com/watch?v=YRhxdVk_sIs)<br/>
-[CNN layers](https://medium.com/r/?url=https%3A%2F%2Fwww.tensorflow.org%2Fapi_docs%2Fpython%2Ftf%2Fkeras%2Flayers%2FLayer)<br/>
-[K-cross Validation](https://medium.com/r/?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DTIgfjmp-4BA)<br/>
-[Plotting Graphs](https://medium.com/r/?url=https%3A%2F%2Fmatplotlib.org%2Fapi%2Fpyplot_api.html)<br/>
