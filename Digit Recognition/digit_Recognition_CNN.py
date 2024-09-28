@@ -6,7 +6,7 @@ from keras.layers import Conv2D, MaxPooling2D, MaxPool2D
 from keras import backend as K
 import matplotlib.pyplot as plt
 
-# the data, split between train and test sets
+
 from keras.utils import np_utils
 from matplotlib import pyplot
 from sklearn.model_selection import KFold
@@ -17,30 +17,28 @@ def input_data():
 
     (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
-    # Reshape to be samples*pixels*width*height
+    
     X_train = X_train.reshape(X_train.shape[0], 28, 28, 1).astype('float32')
     X_test = X_test.reshape(X_test.shape[0], 28, 28, 1).astype('float32')
 
-    # One hot Cpde
+   
     y_train = np_utils.to_categorical(y_train)
     y_test = np_utils.to_categorical(y_test)
     num_classes = y_test.shape[1]
 
-    # convert from integers to floats
+    
     X_train = X_train.astype('float32')
     X_test = X_test.astype('float32')
-    # normalize to range [0, 1]
+   
     X_train = (X_train / 255.0)
     X_test = (X_test / 255.0)
 
     return X_test, y_test, X_train, y_train
 
-# Flatten the images.
-# Flatten each 28x28 image into a 784 dimensional vector
+
 
 def create_model():
-    # Create model
-    # Building CNN
+    
     model = Sequential()
     model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', input_shape=(28, 28, 1)))
     model.add(MaxPooling2D((2, 2)))
@@ -50,20 +48,11 @@ def create_model():
     model.add(Flatten())
     model.add(Dense(100, activation='relu', kernel_initializer='he_uniform'))
     model.add(Dense(10, activation='softmax'))
-    # model.summary()
-
-    # compile model
+    
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     return model
 
-# -------when you dont want to evaluate the model-------------
-# model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=200)
 
-# # Final evaluation of the model
-# scores = model.evaluate(X_test, y_test, verbose=0)
-# print("Large CNN Error: %.2f%%" % (100-scores[1]*100))
-
-# -------------------------------------------------------------
 
 # -------evaluate a model using k-fold cross-validation--------
 def evaluate_model(X_train, y_Train, n_folds=5):
@@ -104,18 +93,16 @@ def summarize_diagnostics(data):
     pyplot.show()
 
 
-# summarize model performance
+
 def summarize_performance(acc):
-    # print summary
+    
     print('Accuracy: mean=%.3f std=%.3f, n=%d' % (numpy.mean(acc) * 100, numpy.std(acc) * 100, len(acc)))
 
-    # box and whisker plots of results
+   
     pyplot.boxplot(acc)
     pyplot.show()
 
-# --------------------------------------------------------------
 
-# This function predicts the images already in the dataset
 def test(X_train, model):
     test_images = X_train[1:5]
     test_images = test_images.reshape(test_images.shape[0], 28, 28)
@@ -137,25 +124,19 @@ def test(X_train, model):
 def run():
     X_test, y_test, X_train, y_train = input_data()
 
-    # Evaluate
-    #accuracy, data = evaluate_model(X_train, y_train)
-    # summarize_diagnostics(data)
-    # summarize_performance(accuracy)
     model = create_model()
     model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=200)
-    # TEST
-    # for images alreday
+    
     test(X_train, model)
 
-    # serialize model to JSON
+  
     model_json = model.to_json()
     with open("model.json", "w") as json_file:
         json_file.write(model_json)
-    # serialize weights to HDF5
+    
     model.save_weights("model.h5")
     print("Saved model to disk")
 
 
 
 
-# run()
